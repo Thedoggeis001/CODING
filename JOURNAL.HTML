@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Quotidiano Online</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f8f8f8;
+      color: #222;
+      margin: 0;
+    }
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-family: 'Times New Roman', serif;
+      font-size: 2em;
+      margin: 0;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #c00;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1100px;
+      margin: auto;
+      background-color: #fff;
+    }
+    article h2 {
+      color: #c00;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+    article h1 {
+      font-size: 1.8em;
+      margin-top: 0;
+    }
+    .sidebar h3 {
+      font-size: 1.2em;
+      color: #000;
+      border-bottom: 2px solid #c00;
+      padding-bottom: 5px;
+    }
+    .sidebar p {
+      font-size: 0.9em;
+      margin-bottom: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #555;
+      background-color: #f0f0f0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Il Quotidiano</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Politica</a>
+      <a href="#">Economia</a>
+      <a href="#">Sport</a>
+      <a href="#">Cultura</a>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h2>IL DECRETO</h2>
+      <h1>Assegno unico 2026, come cambia con la rivalutazione Istat</h1>
+      <p><strong>di Massimo Ferraro</strong></p>
+      <p>L’assegno unico universale per i figli a carico cambia nel 2026 con nuove soglie ISEE e rivalutazione ISTAT. Ecco tutte le simulazioni aggiornate e le novità introdotte dal decreto.</p>
+      <img src="https://via.placeholder.com/800x400" alt="Foto articolo" style="width:100%; border-radius:5px; margin:15px 0;">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec lacinia velit. Vivamus tristique purus id eros tincidunt, ac tincidunt nibh imperdiet...</p>
+    </article>
+
+    <aside class="sidebar">
+      <h3>Il video del giorno</h3>
+      <img src="https://via.placeholder.com/300x200" alt="Video del giorno" style="width:100%; border-radius:5px;">
+      <p>Fuori programma sugli spalti: la proposta durante il match tra Fritz e Alcaraz.</p>
+
+      <h3>Ultime notizie</h3>
+      <ul>
+        <li><a href="#">Ucraina, avanzata russa nel Donbass</a></li>
+        <li><a href="#">Tagli al cinema, proteste dei registi</a></li>
+        <li><a href="#">Casalino presenta il suo nuovo libro</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    © 2025 Il Quotidiano Online — Tutti i diritti riservati
+  </footer>
+
+</body>
+</html>

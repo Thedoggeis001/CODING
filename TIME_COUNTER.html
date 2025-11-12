@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronometro JavaScript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    #display {
+      font-size: 3em;
+      background: white;
+      padding: 20px 50px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    button {
+      font-size: 1.1em;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #start { background: #28a745; color: white; }
+    #stop { background: #dc3545; color: white; }
+    #reset { background: #007bff; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>Cronometro</h1>
+  <div id="display">00:00:00</div><br>
+  <button id="start">Start</button>
+  <button id="stop">Stop</button>
+  <button id="reset">Reset</button>
+
+  <script>
+    let startTime, updatedTime, difference, tInterval;
+    let running = false;
+
+    const display = document.getElementById("display");
+    const startButton = document.getElementById("start");
+    const stopButton = document.getElementById("stop");
+    const resetButton = document.getElementById("reset");
+
+    startButton.addEventListener("click", start);
+    stopButton.addEventListener("click", stop);
+    resetButton.addEventListener("click", reset);
+
+    function start() {
+      if (!running) {
+        startTime = new Date().getTime() - (difference || 0);
+        tInterval = setInterval(updateDisplay, 1000);
+        running = true;
+      }
+    }
+
+    function stop() {
+      if (running) {
+        clearInterval(tInterval);
+        difference = new Date().getTime() - startTime;
+        running = false;
+      }
+    }
+
+    function reset() {
+      clearInterval(tInterval);
+      running = false;
+      difference = 0;
+      display.textContent = "00:00:00";
+    }
+
+    function updateDisplay() {
+      updatedTime = new Date().getTime() - startTime;
+      let hours = Math.floor(updatedTime / (1000 * 60 * 60));
+      let minutes = Math.floor((updatedTime % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((updatedTime % (1000 * 60)) / 1000);
+
+      display.textContent =
+        (hours < 10 ? "0" + hours : hours) + ":" +
+        (minutes < 10 ? "0" + minutes : minutes) + ":" +
+        (seconds < 10 ? "0" + seconds : seconds);
+    }
+  </script>
+
+</body>
+</html>
