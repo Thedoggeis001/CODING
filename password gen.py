@@ -1,35 +1,35 @@
 import random
 import string
 
-print("QUESTO PROGRAMMA GENERERÀ UNA PASSWORD PER TE") # PRESENTAZIONE DEL PROGRAMMA
+print("THIS PROGRAM WILL GENERATE A PASSWORD FOR YOU")  # PROGRAM INTRODUCTION
 
-print("Quanto vuoi che sia lunga la tua password? (Inserisci un numero intero)")
+print("How long do you want your password to be? (Enter an integer number)")
 
 while True:
-    lunghezza_input = input()
+    length_input = input()
     try:
-        # Tenta di convertire l'input in un intero
-        lunghezza = int(lunghezza_input)
+        # Try to convert the input to an integer
+        length = int(length_input)
 
-        # Controlla se il numero è positivo
-        if lunghezza > 0:
-            break  # Esci dal ciclo se è un intero positivo
+        # Check if the number is positive
+        if length > 0:
+            break  # Exit the loop if it's a positive integer
         else:
-            print("Per favore, inserisci un numero intero positivo:")
+            print("Please enter a positive integer:")
     except ValueError:
-        # Cattura l'errore se l'input non è convertibile in intero
-        print("Input non valido. Per favore, inserisci un numero intero:")
+        # Catch the error if the input cannot be converted to an integer
+        print("Invalid input. Please enter an integer number:")
 
-print(f"\nHai scelto una lunghezza di: {lunghezza}")
+print(f"\nYou chose a length of: {length}")
 
-# Definisce l'insieme di tutti i caratteri possibili per la password
-# Include lettere minuscole, maiuscole, cifre e simboli di punteggiatura.
-caratteri = string.ascii_letters + string.digits + string.punctuation
+# Define the set of all possible characters for the password
+# Includes lowercase letters, uppercase letters, digits, and punctuation symbols.
+characters = string.ascii_letters + string.digits + string.punctuation
 
-# Genera la password
-# 1. 'random.choice(caratteri)' seleziona un carattere casuale dalla stringa 'caratteri'.
-# 2. Il ciclo 'for _ in range(lunghezza)' esegue l'operazione per la lunghezza desiderata.
-# 3. La funzione '"".join(...)' unisce tutti i caratteri selezionati in un'unica stringa.
-password = "".join(random.choice(caratteri) for _ in range(lunghezza))
+# Generate the password
+# 1. 'random.choice(characters)' selects a random character from 'characters'.
+# 2. The loop 'for _ in range(length)' repeats the operation for the desired length.
+# 3. The '"".join(...)' function joins all selected characters into a single string.
+password = "".join(random.choice(characters) for _ in range(length))
 
-print(f"La tua nuova password generata è: {password}")
+print(f"Your newly generated password is: {password}")
