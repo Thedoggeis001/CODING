@@ -1,35 +1,51 @@
-import random
-import string
+import java.util.Random;
+import java.util.Scanner;
 
-print("THIS PROGRAM WILL GENERATE A PASSWORD FOR YOU")  # PROGRAM INTRODUCTION
+public class PasswordGenerator {
 
-print("How long do you want your password to be? (Enter an integer number)")
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-while True:
-    length_input = input()
-    try:
-        # Try to convert the input to an integer
-        length = int(length_input)
+        System.out.println("THIS PROGRAM WILL GENERATE A PASSWORD FOR YOU");
+        System.out.print("How long do you want your password to be? (Enter an integer number): ");
 
-        # Check if the number is positive
-        if length > 0:
-            break  # Exit the loop if it's a positive integer
-        else:
-            print("Please enter a positive integer:")
-    except ValueError:
-        # Catch the error if the input cannot be converted to an integer
-        print("Invalid input. Please enter an integer number:")
+        int length = 0;
 
-print(f"\nYou chose a length of: {length}")
+        // Input validation loop
+        while (true) {
+            String input = scanner.nextLine();
+            try {
+                length = Integer.parseInt(input);
+                if (length > 0) {
+                    break; // valid input
+                } else {
+                    System.out.print("Please enter a positive integer: ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter an integer number: ");
+            }
+        }
 
-# Define the set of all possible characters for the password
-# Includes lowercase letters, uppercase letters, digits, and punctuation symbols.
-characters = string.ascii_letters + string.digits + string.punctuation
+        System.out.println("\nYou chose a length of: " + length);
 
-# Generate the password
-# 1. 'random.choice(characters)' selects a random character from 'characters'.
-# 2. The loop 'for _ in range(length)' repeats the operation for the desired length.
-# 3. The '"".join(...)' function joins all selected characters into a single string.
-password = "".join(random.choice(characters) for _ in range(length))
+        // Define possible characters for the password
+        String lowercase = "abcdefghijklmnopqrstuvwxyz";
+        String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String digits = "0123456789";
+        String punctuation = "!@#$%^&*()-_=+[]{};:'\",.<>?/|\\`~";
 
-print(f"Your newly generated password is: {password}")
+        String characters = lowercase + uppercase + digits + punctuation;
+
+        // Generate the password
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            password.append(characters.charAt(index));
+        }
+
+        System.out.println("Your newly generated password is: " + password.toString());
+
+        scanner.close();
+    }
+}
