@@ -1,66 +1,66 @@
-def addizione(x, y):
-    """Restituisce la somma di due numeri."""
+def addition(x, y):
+    """Returns the sum of two numbers."""
     return x + y
 
-def sottrazione(x, y):
-    """Restituisce la differenza tra due numeri."""
+def subtraction(x, y):
+    """Returns the difference between two numbers."""
     return x - y
 
-def moltiplicazione(x, y):
-    """Restituisce il prodotto di due numeri."""
+def multiplication(x, y):
+    """Returns the product of two numbers."""
     return x * y
 
-def divisione(x, y):
-    """Restituisce la divisione tra due numeri, gestendo la divisione per zero."""
+def division(x, y):
+    """Returns the division of two numbers, handling division by zero."""
     if y == 0:
-        # *Correzione: Per gestire l'errore matematico
-        return "Errore: Divisione per zero non consentita!"
+        # *Fix: Handle the mathematical error
+        return "Error: Division by zero is not allowed!"
     return x / y
 
 # ----------------------------------------------------------------------
-# PROGRAMMA PRINCIPALE
+# MAIN PROGRAM
 # ----------------------------------------------------------------------
 
-print("BENVENUTO NELLA CALCOLATRICE SEMPLICE")
-print("Scegli un'operazione:")
-print("1. Addizione")
-print("2. Sottrazione")
-print("3. Moltiplicazione")
-print("4. Divisione")
+print("WELCOME TO THE SIMPLE CALCULATOR")
+print("Choose an operation:")
+print("1. Addition")
+print("2. Subtraction")
+print("3. Multiplication")
+print("4. Division")
 
 while True:
-    # Richiedi l'input dell'operazione
-    scelta = input("Inserisci la scelta (1/2/3/4): ")
+    # Ask for the operation input
+    choice = input("Enter your choice (1/2/3/4): ")
 
-    # Controlla se la scelta è valida
-    if scelta in ('1', '2', '3', '4'):
+    # Check if the choice is valid
+    if choice in ('1', '2', '3', '4'):
         try:
-            # Richiedi i due numeri
-            num1 = float(input("Inserisci il primo numero: "))
-            num2 = float(input("Inserisci il secondo numero: "))
+            # Ask for the two numbers
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
         except ValueError:
-            # *Correzione: Gestisce l'errore se l'input non è un numero
-            print("Input non valido. Per favore, inserisci un numero.")
-            continue # Ritorna all'inizio del ciclo
+            # *Fix: Handle the error if the input is not a number
+            print("Invalid input. Please enter a number.")
+            continue  # Return to the beginning of the loop
 
-        if scelta == '1':
-            risultato = addizione(num1, num2)
-        elif scelta == '2':
-            risultato = sottrazione(num1, num2)
-        elif scelta == '3':
-            risultato = moltiplicazione(num1, num2)
-        elif scelta == '4':
-            risultato = divisione(num1, num2)
+        if choice == '1':
+            result = addition(num1, num2)
+        elif choice == '2':
+            result = subtraction(num1, num2)
+        elif choice == '3':
+            result = multiplication(num1, num2)
+        elif choice == '4':
+            result = division(num1, num2)
         
-        # Stampa il risultato
-        print(f"\nIl risultato è: {risultato}\n")
+        # Print the result
+        print(f"\nThe result is: {result}\n")
         
-        # Dopo il calcolo, chiedi se continuare o uscire
-        next_calculation = input("Vuoi eseguire un altro calcolo? (sì/no): ")
-        if next_calculation.lower() != 'sì' and next_calculation.lower() != 'si':
+        # After calculation, ask if the user wants to continue or exit
+        next_calculation = input("Do you want to perform another calculation? (yes/no): ")
+        if next_calculation.lower() not in ('yes', 'y'):
             break
     else:
-        # *Correzione: Se l'utente non inserisce una scelta valida
-        print("Scelta non valida. Inserisci un numero da 1 a 4.")
+        # *Fix: If the user enters an invalid choice
+        print("Invalid choice. Please enter a number from 1 to 4.")
 
-print("Calcolatrice chiusa. Arrivederci!")
+print("Calculator closed. Goodbye!")
