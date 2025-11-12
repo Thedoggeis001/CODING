@@ -2,30 +2,32 @@ import java.util.Scanner;
 
 public class SimpleCalculator {
 
-    // ---------------------- BASIC OPERATIONS ----------------------
-
+    // Addition
     public static double addition(double x, double y) {
         return x + y;
     }
 
+    // Subtraction
     public static double subtraction(double x, double y) {
         return x - y;
     }
 
+    // Multiplication
     public static double multiplication(double x, double y) {
         return x * y;
     }
 
+    // Division (handles division by zero)
     public static String division(double x, double y) {
         if (y == 0) {
-            // *Correction: Handle division by zero
             return "Error: Division by zero is not allowed!";
         }
         return String.valueOf(x / y);
     }
 
-    // ---------------------- MAIN PROGRAM ----------------------
-
+    // ---------------------------------------------------------------
+    // MAIN PROGRAM
+    // ---------------------------------------------------------------
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -37,27 +39,56 @@ public class SimpleCalculator {
         System.out.println("4. Division");
 
         while (true) {
-            System.out.print("Enter your choice (1/2/3/4): ");
+            System.out.print("\nEnter your choice (1/2/3/4): ");
             String choice = input.nextLine();
 
             if (choice.equals("1") || choice.equals("2") || choice.equals("3") || choice.equals("4")) {
-                double num1, num2;
-
                 try {
                     System.out.print("Enter the first number: ");
-                    num1 = Double.parseDouble(input.nextLine());
+                    double num1 = Double.parseDouble(input.nextLine());
 
                     System.out.print("Enter the second number: ");
-                    num2 = Double.parseDouble(input.nextLine());
+                    double num2 = Double.parseDouble(input.nextLine());
+
+                    String result;
+
+                    switch (choice) {
+                        case "1":
+                            result = String.valueOf(addition(num1, num2));
+                            break;
+                        case "2":
+                            result = String.valueOf(subtraction(num1, num2));
+                            break;
+                        case "3":
+                            result = String.valueOf(multiplication(num1, num2));
+                            break;
+                        case "4":
+                            result = division(num1, num2);
+                            break;
+                        default:
+                            result = "Invalid operation.";
+                    }
+
+                    System.out.println("\nThe result is: " + result + "\n");
+
+                    // Ask if the user wants to continue
+                    System.out.print("Do you want to perform another calculation? (yes/no): ");
+                    String next = input.nextLine().trim().toLowerCase();
+
+                    if (!next.equals("yes") && !next.equals("y")) {
+                        break;
+                    }
+
                 } catch (NumberFormatException e) {
-                    // *Correction: Handle invalid numeric input
-                    System.out.println("Invalid input. Please enter a valid number.\n");
-                    continue;
+                    System.out.println("Invalid input. Please enter numeric values only.");
                 }
 
-                String result;
-                switch (choice) {
-                    case "1":
-                        result = String.valueOf(addition(num1, num2));
-                        break;
-                    case "2":
+            } else {
+                System.out.println("Invalid choice. Please enter a number from 1 to 4.");
+            }
+        }
+
+        System.out.println("Calculator closed. Goodbye!");
+        input.close();
+    }
+}
