@@ -1,4 +1,4 @@
-# READ NE
+# READ ME
 
 🇫🇷 README – Collection de projets introductifs en HTML, Python et Java
 📌 À propos du projet
